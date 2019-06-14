@@ -16,3 +16,5 @@ Route::get("/", "StaticPagesController@home")->name('home');
 //name中的help对应blade中route中的名称
 Route::get("/faq", "StaticPagesController@help")->name('help');
 Route::get("/about", "StaticPagesController@about")->name('about');
+
+Route::get('signup', "UsersController@create")->name('signup');
