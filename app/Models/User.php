@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function feed()
     {
-        return $this->statuses->orderBy('created_at', 'desc');
+        return $this->statuses()->orderBy('created_at', 'desc');
     }
 
     public function followers()
@@ -77,15 +77,15 @@ class User extends Authenticatable
 
     public function follow($user_ids)
     {
-        if (! is_array($user_ids)) {
+        if ( ! is_array($user_ids)) {
             $user_ids = compact('user_ids');
         }
-        $this->followings()->sunc($user_ids, false);
+        $this->followings()->sync($user_ids, false);
     }
 
     public function unfollow($user_ids)
     {
-        if (! is_array($user_ids)) {
+        if ( ! is_array($user_ids)) {
             $user_ids = compact('user_ids');
         }
         $this->followings()->detach($user_ids);
